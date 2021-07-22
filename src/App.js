@@ -1,10 +1,18 @@
 import SignUp from './components/SingUp';
+import Home from './components/Home';
+import Login from './components/Login';
+import { AuthProvider } from './content/AuthContext';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-const App = () => {
+function App() {
   return (
-    <div >
-      <SignUp />
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Route exact path="/" component={Home} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={Login} />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
